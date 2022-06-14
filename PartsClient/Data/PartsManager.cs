@@ -71,7 +71,19 @@ namespace PartsClient.Data
 
         public static async Task Update(Part part)
         {
-            throw new NotImplementedException();
+            if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
+                return;
+
+            HttpRequestMessage msg = new(HttpMethod.Put, $"{Url}parts/{part.PartID}");
+            msg.Content = JsonContent.Create<Part>(part);
+
+            HttpClient client = await GetClient();
+
+            var response = await client.SendAsync(msg);
+            response.EnsureSuccessStatusCode();
+
+
+
         }
 
         public static async Task Delete(string partID)
