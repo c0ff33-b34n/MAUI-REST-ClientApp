@@ -82,13 +82,19 @@ namespace PartsClient.Data
             var response = await client.SendAsync(msg);
             response.EnsureSuccessStatusCode();
 
-
-
         }
 
         public static async Task Delete(string partID)
         {
-            throw new NotImplementedException();                        
+            if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
+                return;
+
+            HttpRequestMessage msg = new(HttpMethod.Delete, $"{Url}parts/{partID}");
+
+            HttpClient client = await GetClient();
+
+            var response = await client.SendAsync(msg);
+            response.EnsureSuccessStatusCode();
         }
     }
 }
