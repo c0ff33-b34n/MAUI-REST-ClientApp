@@ -1,5 +1,4 @@
-﻿using Android.Service.Autofill;
-using PartsClient.Data;
+﻿using PartsClient.Data;
 using PartsClient.Pages;
 using System;
 using System.Collections.Generic;

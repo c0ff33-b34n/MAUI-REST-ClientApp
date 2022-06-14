@@ -1,5 +1,4 @@
-﻿using AndroidX.Interpolator.View.Animation;
-using Microsoft.Maui.Layouts;
+﻿using Microsoft.Maui.Layouts;
 using PartsClient.Data;
 using System;
 using System.Collections.Generic;
